@@ -1,0 +1,11 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+
+/* Your customizations here */
+
+$input-color: #818181;
+$input-hover-color: #495057;
+
+@import "node_modules/bootstrap/scss/bootstrap";
