@@ -1,5 +1,12 @@
-const withSass = require('@zeit/next-sass');
+const withPlugins = require('next-compose-plugins');
+const sass = require('@zeit/next-sass');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
-module.exports = withSass({
+const sassConfig ={
     cssModules: false,
-})
+};
+
+module.exports = withPlugins([
+    [sass, sassConfig],
+], {});
+

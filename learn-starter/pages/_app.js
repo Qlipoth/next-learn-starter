@@ -1,12 +1,7 @@
-import React from 'react'
-import App from 'next/app'
+import { UIDReset } from 'react-uid';
 
-class MyApp extends App {
-    render() {
-        const { Component, pageProps } = this.props;
-
-        return <Component {...pageProps} />
-    }
+export default function App({ Component, pageProps }) {
+    return <UIDReset>
+        <Component {...pageProps} />
+    </UIDReset>
 }
-
-export default MyApp
