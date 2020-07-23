@@ -1,6 +1,9 @@
-import '../styles/global.css'
-import { AppProps } from 'next/app'
+import { UIDReset } from 'react-uid';
+import { AppProps } from 'next/app';
+import '../styles/main.scss'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <UIDReset>
+    <Component {...pageProps} />
+  </UIDReset>
 }
