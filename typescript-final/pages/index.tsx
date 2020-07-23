@@ -4,6 +4,8 @@ import Layout, { siteTitle } from '../components/layout'
 import CheckBox from '../components/Checkbox'
 import RadioGroup from '../components/RadioGroup'
 import ToDoList from '../components/ToDoList'
+import { Icon, InlineIcon } from '@iconify/react';
+import close from '@iconify/icons-zmdi/close';
 import _ from "lodash";
 
 interface SingleItem {
@@ -102,10 +104,9 @@ export default function Home() {
                         title={el.title}
                         onCheck={ (e) => { checkListItem(e, el) } }
                     />
-                    <i
-                        className="zmdi zmdi-close text-danger"
-                        onClick={ () => { removeNewListItem(el) } }
-                    />
+                    <span onClick={ () => { removeNewListItem(el) } }>
+                      <Icon className="text-danger" icon={close} />
+                    </span>
                     <RadioGroup
                         options={priorities}
                         title="Выберите приоритет"

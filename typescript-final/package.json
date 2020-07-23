@@ -25,6 +25,8 @@
     "node-sass": "^4.14.1"
   },
   "devDependencies": {
+    "@iconify/icons-zmdi": "^1.0.3",
+    "@iconify/react": "^1.1.3",
     "@types/node": "^13.11.0",
     "@types/react": "^16.9.32",
     "babel-plugin-styled-components": "^1.10.7",
