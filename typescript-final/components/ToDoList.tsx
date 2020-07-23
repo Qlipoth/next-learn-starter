@@ -1,5 +1,6 @@
 import * as React from "react";
 import _ from "lodash";
+import {ExtendedButton, ButtonTypes} from "./Button";
 
 interface ListItem {
     id: string
@@ -24,16 +25,20 @@ const ToDoList: React.FC<ToDoListProps> = ({ title, onAddNewItem, todoList, chil
         return _.filter(todoList, el => el.title.includes(searchStr));
     }, [searchStr, todoList]);
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
-            onAddNewItem({
-                id: _.uniqueId(),
-                title: newListItem,
-                checked: false,
-                priority: null,
-            });
-            setNewListItem('');
+            addItemClick();
         }
+    };
+
+    const addItemClick = ():void => {
+        onAddNewItem({
+            id: _.uniqueId(),
+            title: newListItem,
+            checked: false,
+            priority: null,
+        });
+        setNewListItem('');
     };
 
     return (
@@ -62,14 +67,22 @@ const ToDoList: React.FC<ToDoListProps> = ({ title, onAddNewItem, todoList, chil
                     ))
                 }
             </ul>
+            <div className="d-flex">
+                <input
+                    className="form-control"
+                    placeholder="Введите название дела"
+                    value={newListItem}
+                    onChange={e => setNewListItem(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    />
+                    <ExtendedButton
+                        text="Добавить"
+                        className="ml-3"
+                        view={ButtonTypes.Primary}
+                        action={addItemClick}
+                        />
+            </div>
 
-            <input
-                className="form-control"
-                placeholder="Введите название дела"
-                value={newListItem}
-                onChange={e => setNewListItem(e.target.value)}
-                onKeyDown={handleKeyDown}
-            />
         </div>
     )
 };
