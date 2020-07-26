@@ -5,7 +5,7 @@ import {  UIDConsumer } from 'react-uid';
 interface RadioGroupProps {
     title: string
     selected: string | number
-    options: { title: string;  id: number}[]
+    options: { title: string;  id: number | string}[]
     onChange(event: React.ChangeEvent<HTMLInputElement>): void
 }
 

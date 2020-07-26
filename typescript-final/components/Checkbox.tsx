@@ -9,7 +9,8 @@ interface CheckBoxProps {
   onCheck(value: boolean | null): void
 }
 
-const CheckBox: React.FC<CheckBoxProps> = ({ title, checked, value,  onCheck}) => {
+const CheckBox: React.FC<CheckBoxProps> = ({ title, checked, value,  onCheck, ...restProps}) => {
+
   return (
       <UIDConsumer>
         {(id, uid) => (
@@ -39,7 +40,8 @@ const CheckBox: React.FC<CheckBoxProps> = ({ title, checked, value,  onCheck}) =
 };
 
 const CheckboxLabel = styled.label`
-    text-decoration: ${props => props.checked? 'line-through' : 'inherit'}
+    text-decoration: ${props => props.checked? 'line-through' : 'inherit'};
+    color: ${({ theme }) => theme.colorTextAccented };
   `;
 
 export default CheckBox;
