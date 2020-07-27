@@ -41,7 +41,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({ title, checked, value,  onCheck, ..
 
 const CheckboxLabel = styled.label`
     text-decoration: ${props => props.checked? 'line-through' : 'inherit'};
-    color: ${({ theme }) => theme.colorTextAccented };
+    color: ${(props) => props.theme.colorBackgroundAccented };
   `;
 
 export default CheckBox;

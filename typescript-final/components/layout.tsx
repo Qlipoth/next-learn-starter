@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import Link from 'next/link';
 import '../styles/main.scss';
-import { Themes, ThemeNames, SingleTheme } from '../theming';
+import {ThemeNames} from '../theming';
 import * as React from "react";
 import _ from "lodash";
-import ThemeContext from '../components/themeContext';
+import {AppThemeContext} from './themeContext';
 import RadioGroup from "./RadioGroup";
 
 const name = '[Your Name]'
@@ -22,8 +21,6 @@ export default function Layout({
     console.log(ThemeNames);
     return _.map(ThemeNames, (themeName, index) => { return {'id': index, 'title': themeName}; });
   }, [ThemeNames]);
-
-  const { themeName, changeThemeName } = React.useContext(ThemeContext);
 
   return (
     <div>
@@ -43,12 +40,19 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header>
-          <RadioGroup
-              options={themeNames}
-              title="Выберите тему"
-              selected={themeName}
-              onChange={(e) => { debugger; changeThemeName(e.target.value) }}
-            />
+          <AppThemeContext.Consumer>
+              {
+                  ctx => (
+                      <RadioGroup
+                          options={themeNames}
+                          title="Выберите тему"
+                          selected={ctx.themeName}
+                          onChange={(e) => { ctx.changeThemeName(ThemeNames[e.target.value]) }}
+                      />
+                  )
+              }
+          </AppThemeContext.Consumer>
+
       </header>
       <main className="container">{children}</main>
     </div>
