@@ -1,6 +1,5 @@
 import * as React from "react";
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
 import CheckBox from '../components/Checkbox'
 import RadioGroup from '../components/RadioGroup'
 import ToDoList from '../components/ToDoList'
@@ -85,10 +84,7 @@ export default function Home() {
   ];
 
   return (
-      <Layout home>
-        <Head>
-          <title>{siteTitle}</title>
-        </Head>
+      <Layout home title='Home page'>
         <section>
           <ToDoList
               todoList={todoList}
