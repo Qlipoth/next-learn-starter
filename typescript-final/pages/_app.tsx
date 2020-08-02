@@ -1,11 +1,10 @@
 import {UIDReset} from 'react-uid';
 import * as React from "react";
-import '../styles/main.scss'
-import {Themes, ThemeProvider} from 'styled-components';
-import {ThemeNames} from '../theming';
+import '../styles/main.scss';
 import AppThemeProvider from '../components/themeContext';
+import withReactRouter from '../components/with-react-router';
 
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
     return (
         <AppThemeProvider>
             <UIDReset>
@@ -14,4 +13,6 @@ export default function App({ Component, pageProps }) {
             </UIDReset>
         </AppThemeProvider>
     );
-}
+};
+
+export default withReactRouter(App);

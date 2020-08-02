@@ -5,6 +5,7 @@ import * as React from "react";
 import _ from "lodash";
 import {AppThemeContext} from './themeContext';
 import RadioGroup from "./RadioGroup";
+import Navigation from "./Navigation";
 
 export default function Layout({
   children,
@@ -21,6 +22,24 @@ export default function Layout({
     return _.map(ThemeNames, (themeName, index) => { return {'id': index, 'title': themeName}; });
   }, [ThemeNames]);
 
+  const navLinks = [
+      {
+          link: '/',
+          title: 'Главная',
+          active: true,
+      },
+      {
+          link: '/partners',
+          title: 'Партнеры',
+          active: true,
+      },
+      {
+          link: '/about',
+          title: 'О нас',
+          active: true,
+      },
+  ];
+
   return (
     <div>
       <Head>
@@ -34,6 +53,7 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header>
+          <Navigation navList={navLinks}></Navigation>
           <AppThemeContext.Consumer>
               {
                   ctx => (
